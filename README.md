@@ -6,3 +6,8 @@ This lab will be completed individually. The purpose of this assignment is to le
 1. Choose a cipher algorithm you would like to learn more about. Research it, then write pseudocode for the encrypt and decrypt functions.
 2. Implement a function to encrypt the plaintext.
 3. Implement a function to decrypt the ciphertext.
+
+### Authors
+Original Author(s):
+* [Nate Phillips](https://github.com/knathanp)
+* [Kyle Mueller](https://github.com/mueller14003)
