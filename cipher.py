@@ -42,17 +42,17 @@ class Cipher:
 
         # The encrypt pseudocode
         pc = "encrypt(plaintext, password)\n" \
+             "   key <- get_key_length(password)\n" \
              "   rail <- [['\\n' FOR i IN range(len(plaintext))] FOR j IN range(key)]\n" \
-             "   dir_down <- False\n" \
+             "   down_dir <- False\n" \
              "   row <- 0\n" \
              "   col <- 0\n" \
-             "   key <- get_key_length(password)\n" \
              "   FOR i IN range(len(plaintext))\n" \
              "      IF row IS 0 OR row IS key - 1\n" \
-             "         dir_down <- not dir_down\n" \
+             "         down_dir <- not down_dir\n" \
              "      rail[row][col] <- plaintext[i]\n" \
              "      col + 1\n" \
-             "      IF dir_down IS True\n" \
+             "      IF down_dir IS True\n" \
              "         row + 1\n" \
              "      ELSE\n" \
              "         row - 1\n" \
@@ -65,19 +65,19 @@ class Cipher:
 
         # The decrypt pseudocode
         pc += "decrypt(ciphertext, password)\n" \
+              "   key <- get_key_length(password)\n" \
               "   rail <- [['\\n' FOR i IN range(len(plaintext))] FOR j IN range(key)]\n" \
-              "   dir_down <- None\n" \
+              "   down_dir <- None\n" \
               "   row <- 0\n" \
               "   col <- 0\n" \
-              "   key <- get_key_length(password)\n" \
               "   FOR i IN range(len(ciphertext))\n" \
               "      IF row IS 0\n" \
-              "         dir_down <- False\n" \
+              "         down_dir <- False\n" \
               "      IF row IS key - 1\n" \
-              "         dir_down <- True\n" \
+              "         down_dir <- True\n" \
               "      rail[i][j] <- '*'\n" \
               "      col + 1\n" \
-              "      IF dir_down\n" \
+              "      IF down_dir\n" \
               "         row + 1\n" \
               "      ELSE\n" \
               "         row - 1\n" \
@@ -92,13 +92,13 @@ class Cipher:
               "   col <- 0\n" \
               "   FOR i IN range(len(cipher))\n" \
               "      IF row IS 0\n" \
-              "         dir_down <- True\n" \
+              "         down_dir <- True\n" \
               "      IF row IS key - 1\n" \
-              "         dir_down <- False\n" \
+              "         down_dir <- False\n" \
               "      IF rail[i][j] IS NOT '*'\n" \
               "         plaintext.append(rail[row][col])\n" \
               "         col + 1\n" \
-              "      IF dir_down\n" \
+              "      IF down_dir\n" \
               "         row + 1\n" \
               "      ELSE\n" \
               "         row - 1\n" \
@@ -123,6 +123,9 @@ class Cipher:
     # 5. Combine result layout into new (encrypted) string
     ##########################################################################
     def encrypt(self, plaintext, password):
+        key = self._get_key_length(password)
+        rail = [['\n' for i in range(len(plaintext))] for j in range(key)]
+        
         ciphertext = plaintext
         # TODO - Add your code here
         return ciphertext
@@ -140,5 +143,5 @@ class Cipher:
     # GETKEYLENGTH
     # TODO: ADD description
     ##########################################################################
-    def get_key_length(self, password):
+    def _get_key_length(self, password):
         return len(password)
