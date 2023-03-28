@@ -8,6 +8,6 @@ This lab will be completed individually. The purpose of this assignment is to le
 3. Implement a function to decrypt the ciphertext.
 
 ### Authors
-Original Author(s):
 * [Nate Phillips](https://github.com/knathanp)
 * [Kyle Mueller](https://github.com/mueller14003)
+* [Andersen Stewart](https://github.com/Android-JCPP-Servo)
