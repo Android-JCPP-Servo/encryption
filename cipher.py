@@ -41,7 +41,24 @@ class Cipher:
         # TODO: This function should return your psuedocode, neatly formatted
 
         # The encrypt pseudocode
-        pc = "insert the encryption pseudocode\n"
+        pc = "SET rail_grid AS map object using length of plaintext and key\n" \
+             "SET down_direction to False to start at top-left grid\n" \
+             "SET row and col to 0 for top-left position\n" \
+             "LOOP through length of plaintext\n" \
+             "   IF the row IS the top OR the bottom\n" \
+             "      SET down_direction to NOT down_direction\n" \
+             "   PUT the next plaintext letter into the current grid square\n" \
+             "   ADD 1 to the current column value\n" \
+             "   IF down_direction IS True\n" \
+             "      ADD 1 to the current row value\n" \
+             "   IF down_direction IS False\n" \
+             "      SUBTRACT 1 from the current row value\n" \
+             "SET result to empty array\n" \
+             "LOOP through length of key\n" \
+             "   LOOP through length of plaintext\n" \
+             "      IF current grid square IS NOT '\\n'" \
+             "         PUT grid square into result array\n" \
+             "RETURN result"
 
         # The decrypt pseudocode
         pc += "insert the decryption pseudocode\n"
