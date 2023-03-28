@@ -60,10 +60,47 @@ class Cipher:
              "      FOR j IN range(len(plaintext))\n" \
              "         IF rail[i][j] IS NOT '\\n'\n" \
              "            ciphertext.append(rail[i][j])\n" \
-             "   RETURN ciphertext"
+             "   RETURN \"\".join(ciphertext)"
 
         # The decrypt pseudocode
         pc += "decrypt(ciphertext, password)\n" \
+              "   rail <- [['\\n' FOR i IN range(len(plaintext))] FOR j IN range(key)]\n" \
+              "   dir_down <- None\n" \
+              "   row <- 0\n" \
+              "   col <- 0\n" \
+              "   FOR i IN range(len(ciphertext))\n" \
+              "      IF row IS 0\n" \
+              "         dir_down <- False\n" \
+              "      IF row IS key - 1\n" \
+              "         dir_down <- True\n" \
+              "      rail[i][j] <- '*'\n" \
+              "      col + 1\n" \
+              "      IF dir_down\n" \
+              "         row + 1\n" \
+              "      ELSE\n" \
+              "         row - 1\n" \
+              "   index <- 0\n" \
+              "   FOR i IN range(key)\n" \
+              "      FOR j IN range(len(cipher))\n" \
+              "         IF rail[i][j] IS '*' AND index < len(cipher)\n" \
+              "            rail[i][j] <- cipher[index]\n" \
+              "            index + 1\n" \
+              "   plaintext <- []\n" \
+              "   row <- 0\n" \
+              "   col <- 0\n" \
+              "   FOR i IN range(len(cipher))\n" \
+              "      IF row IS 0\n" \
+              "         dir_down <- True\n" \
+              "      IF row IS key - 1\n" \
+              "         dir_down <- False\n" \
+              "      IF rail[i][j] IS NOT '*'\n" \
+              "         plaintext.append(rail[row][col])\n" \
+              "         col + 1\n" \
+              "      IF dir_down\n" \
+              "         row + 1\n" \
+              "      ELSE\n" \
+              "         row - 1\n" \
+              "   RETURN \"\".join(plaintext)"
 
         return pc
 
