@@ -15,7 +15,7 @@
 class Cipher:
     def __init__(self):
         # TODO: Insert anything you need for your cipher here
-        self._key = 3 # Define number of rows or rails for encryption/decryption
+        self._key = 0 # Define number of rows or rails for encryption/decryption
 
     def get_author(self):
         # TODO: Return your name
@@ -46,6 +46,7 @@ class Cipher:
              "   dir_down <- False\n" \
              "   row <- 0\n" \
              "   col <- 0\n" \
+             "   key <- get_key_length(password)\n" \
              "   FOR i IN range(len(plaintext))\n" \
              "      IF row IS 0 OR row IS key - 1\n" \
              "         dir_down <- not dir_down\n" \
@@ -68,6 +69,7 @@ class Cipher:
               "   dir_down <- None\n" \
               "   row <- 0\n" \
               "   col <- 0\n" \
+              "   key <- get_key_length(password)\n" \
               "   FOR i IN range(len(ciphertext))\n" \
               "      IF row IS 0\n" \
               "         dir_down <- False\n" \
@@ -100,13 +102,25 @@ class Cipher:
               "         row + 1\n" \
               "      ELSE\n" \
               "         row - 1\n" \
-              "   RETURN \"\".join(plaintext)"
+              "   RETURN \"\".join(plaintext)\n\n"
+        
+        # Method for determining key size
+        pc += "get_key_length(password)\n" \
+              "   RETURN len(password)"
 
         return pc
 
     ##########################################################################
     # ENCRYPT
-    # TODO: ADD description
+    # Using the Rail Fence encryption method, the plaintext will be encrypted
+    # by following this process:
+    # 1. Place first letter of string in top-left grid cell
+    # 2. Place consecutive letters in next bottom-right grid cell until bottom
+    #    row is reached
+    # 3. If bottom is reached, move upward to the right until the grid top is
+    #    reached
+    # 4. Follow this pattern until end of string is reached
+    # 5. Combine result layout into new (encrypted) string
     ##########################################################################
     def encrypt(self, plaintext, password):
         ciphertext = plaintext
@@ -121,3 +135,10 @@ class Cipher:
         plaintext = ciphertext
         # TODO - Add your code here
         return plaintext
+    
+    ##########################################################################
+    # GETKEYLENGTH
+    # TODO: ADD description
+    ##########################################################################
+    def get_key_length(self, password):
+        return len(password)
