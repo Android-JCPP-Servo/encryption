@@ -2,7 +2,7 @@
 # Program:
 #    Lab 13: Create a cipher
 # Author:
-#    Br. Helfrich, Kyle Mueller
+#    Br. Helfrich, Kyle Mueller, Andersen Stewart
 # Summary:
 #    This program will be able to encrypt and decrypt text using a
 #    cipher.

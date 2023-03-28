@@ -2,7 +2,7 @@
 # COMPONENT:
 #    CIPHER01
 # Author:
-#    Br. Helfrich, Kyle Mueller, <your name here if you made a change>
+#    Br. Helfrich, Kyle Mueller, Andersen Stewart
 # Summary:
 #    Implement your cipher here. You can view 'example.py' to see the
 #    completed Caesar Cipher example.
