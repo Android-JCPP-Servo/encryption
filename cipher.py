@@ -60,7 +60,7 @@ class Cipher:
              "      FOR j IN range(len(plaintext))\n" \
              "         IF rail[i][j] IS NOT '\\n'\n" \
              "            ciphertext.append(rail[i][j])\n" \
-             "   RETURN \"\".join(ciphertext)"
+             "   RETURN \"\".join(ciphertext)\n\n"
 
         # The decrypt pseudocode
         pc += "decrypt(ciphertext, password)\n" \
