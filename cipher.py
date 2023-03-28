@@ -15,15 +15,15 @@
 class Cipher:
     def __init__(self):
         # TODO: Insert anything you need for your cipher here
-        pass
+        self._key = 3 # Define number of rows or rails for encryption/decryption
 
     def get_author(self):
         # TODO: Return your name
-        return "author"
+        return "Andersen Stewart"
 
     def get_cipher_name(self):
         # TODO: Return the cipher name
-        return "cipher name"
+        return "Rail Fence Cipher"
 
     ##########################################################################
     # GET CIPHER CITATION
@@ -31,7 +31,7 @@ class Cipher:
     ##########################################################################
     def get_cipher_citation(self):
         # TODO: This function should return your citation(s)
-        return "citation"
+        return "GeeksforGeeks. (2023, March 27). RAIL FENCE CIPHER - encryption and decryption. GeeksforGeeks. Retrieved March 28, 2023, from https://www.geeksforgeeks.org/rail-fence-cipher-encryption-decryption/"
 
     ##########################################################################
     # GET PSEUDOCODE
