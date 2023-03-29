@@ -184,6 +184,17 @@ class Cipher:
                 down_dir = True
             # Set current grid cell to *
             rail[row][col] = '*'
+            # Move to the next column
+            col += 1
+            # If we're moving down...
+            if down_dir:
+                # ...move down one row
+                row += 1
+            # If we're moving up...
+            else:
+                # ...move up one row
+                row -= 1
+        # 
         # Return plaintext
         return "".join(plaintext)
     
