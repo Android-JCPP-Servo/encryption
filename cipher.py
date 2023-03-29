@@ -123,11 +123,41 @@ class Cipher:
     # 5. Combine result layout into new (encrypted) string
     ##########################################################################
     def encrypt(self, plaintext, password):
+        # Get key length
         key = self._get_key_length(password)
+        # Set rail grid system
         rail = [['\n' for i in range(len(plaintext))] for j in range(key)]
-        
-        ciphertext = plaintext
-        # TODO - Add your code here
+        # Initialize variables for grid layout
+        down_dir = False
+        row, col = 0, 0
+        # Loop through length of plaintext to determine grid layout width
+        for i in range(len(plaintext)):
+            # Check if we're at the top or bottom of the grid layout
+            if row == 0 or row == key - 1:
+                # Start moving down or up, depending on position
+                down_dir = not down_dir
+            # Set the row and column to current string character position
+            rail[row][col] = plaintext[i]
+            # Move to the next column
+            col += 1
+            # If we're moving down...
+            if down_dir:
+                # Go downward one row
+                row += 1
+            # If we' moving up...'
+            else:
+                # Go up one row
+                row -= 1
+        # Begin defining the ciphertext
+        ciphertext = []
+        # Loop through length of key and plaintext to construct ciphertext
+        for i in range(key):
+            for j in range(len(plaintext)):
+                # Check if the current character is not a newline character
+                if rail[i][j] != '\n':
+                    # Append current character if it is not a newline character
+                    ciphertext.append(rail[i][j])
+        # Return ciphertext
         return ciphertext
 
     ##########################################################################
