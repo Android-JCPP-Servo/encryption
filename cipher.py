@@ -75,7 +75,7 @@ class Cipher:
               "         down_dir <- False\n" \
               "      IF row IS key - 1\n" \
               "         down_dir <- True\n" \
-              "      rail[i][j] <- '*'\n" \
+              "      rail[row][col] <- '*'\n" \
               "      col + 1\n" \
               "      IF down_dir\n" \
               "         row + 1\n" \
@@ -172,7 +172,19 @@ class Cipher:
         # Initialize variables and directions for grid layout
         down_dir = None
         row, col = 0, 0
-        
+        # Loop through length of ciphertext to determine grid layout
+        for i in range(len(ciphertext)):
+            # If we're on the bottom row...
+            if row == 0:
+                # ...set down_dir to False
+                down_dir = False
+            # IF we're on the top row...
+            if row == key - 1:
+                # ...set down_dir to True
+                down_dir = True
+            # Set current grid cell to *
+            rail[row][col] = '*'
+        # Return plaintext
         return "".join(plaintext)
     
     ##########################################################################
