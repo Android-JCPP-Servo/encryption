@@ -203,6 +203,8 @@ class Cipher:
                 if rail[i][j] == '*' and index < len(ciphertext):
                     # Replace the marker with the corresponding ciphertext char
                     rail[i][j] = ciphertext[index]
+                    # Move to the next index
+                    index += 1
         # Begin decrypting to plaintext
         plaintext = []
         # Initialize row and column indices
