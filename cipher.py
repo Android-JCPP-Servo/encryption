@@ -203,7 +203,34 @@ class Cipher:
                 if rail[i][j] == '*' and index < len(ciphertext):
                     # Replace the marker with the corresponding ciphertext char
                     rail[i][j] = ciphertext[index]
-        
+        # Begin decrypting to plaintext
+        plaintext = []
+        # Initialize row and column indices
+        row, col = 0, 0
+        # Loop through length of ciphertext
+        for i in range(len(ciphertext)):
+            # If we're on the bottom row...
+            if row == 0:
+                # ...set down direction to True
+                down_dir = True
+            # If we're on the top row...
+            if row == key - 1:
+                # ...set down direction to False
+                down_dir = False
+            # If the current char is not the marker...
+            if rail[i][j] != '*':
+                # ...append the character
+                plaintext.append(rail[row][col])
+                # Move to the next column
+                col += 1
+            # If we're moving down...
+            if down_dir:
+                # ...move down one row
+                row += 1
+            # If we' moving up...
+            else:
+                # ...move up one row
+                row -= 1
         # Return plaintext
         return "".join(plaintext)
     
