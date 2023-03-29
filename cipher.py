@@ -66,7 +66,7 @@ class Cipher:
         # The decrypt pseudocode
         pc += "decrypt(ciphertext, password)\n" \
               "   key <- get_key_length(password)\n" \
-              "   rail <- [['\\n' FOR i IN range(len(plaintext))] FOR j IN range(key)]\n" \
+              "   rail <- [['\\n' FOR i IN range(len(ciphertext))] FOR j IN range(key)]\n" \
               "   down_dir <- None\n" \
               "   row <- 0\n" \
               "   col <- 0\n" \
@@ -165,9 +165,12 @@ class Cipher:
     # TODO: ADD description
     ##########################################################################
     def decrypt(self, ciphertext, password):
-        plaintext = ciphertext
-        # TODO - Add your code here
-        return plaintext
+        # Get key from password length
+        key = self._get_key_length(password)
+        # Establish grid rail system
+        rail = [['\n' for i in range(len())]]
+
+        return "".join(plaintext)
     
     ##########################################################################
     # GETKEYLENGTH
