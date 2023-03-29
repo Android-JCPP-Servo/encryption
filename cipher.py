@@ -95,7 +95,7 @@ class Cipher:
               "         down_dir <- True\n" \
               "      IF row IS key - 1\n" \
               "         down_dir <- False\n" \
-              "      IF rail[i][j] IS NOT '*'\n" \
+              "      IF rail[row][col] IS NOT '*'\n" \
               "         plaintext.append(rail[row][col])\n" \
               "         col + 1\n" \
               "      IF down_dir\n" \
@@ -218,7 +218,7 @@ class Cipher:
                 # ...set down direction to False
                 down_dir = False
             # If the current char is not the marker...
-            if rail[i][j] != '*':
+            if rail[row][col] != '*':
                 # ...append the character
                 plaintext.append(rail[row][col])
                 # Move to the next column
