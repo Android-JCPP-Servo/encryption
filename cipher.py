@@ -72,9 +72,9 @@ class Cipher:
               "   col <- 0\n" \
               "   FOR i IN range(len(ciphertext))\n" \
               "      IF row IS 0\n" \
-              "         down_dir <- False\n" \
-              "      IF row IS key - 1\n" \
               "         down_dir <- True\n" \
+              "      IF row IS key - 1\n" \
+              "         down_dir <- False\n" \
               "      rail[row][col] <- '*'\n" \
               "      col + 1\n" \
               "      IF down_dir\n" \
@@ -176,12 +176,12 @@ class Cipher:
         for i in range(len(ciphertext)):
             # If we're on the bottom row...
             if row == 0:
-                # ...set down_dir to False
-                down_dir = False
-            # IF we're on the top row...
-            if row == key - 1:
                 # ...set down_dir to True
                 down_dir = True
+            # IF we're on the top row...
+            if row == key - 1:
+                # ...set down_dir to False
+                down_dir = False
             # Set current grid cell to *
             rail[row][col] = '*'
             # Move to the next column
