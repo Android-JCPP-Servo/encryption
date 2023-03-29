@@ -194,7 +194,16 @@ class Cipher:
             else:
                 # ...move up one row
                 row -= 1
-        # 
+        # Start checking to see which grid cells are marked with text
+        index = 0
+        # Loop through size of key to determine grid size
+        for i in range(key):
+            for j in range(len(ciphertext)):
+                # Check if cell has * marker
+                if rail[i][j] == '*' and index < len(ciphertext):
+                    # Replace the marker with the corresponding ciphertext char
+                    rail[i][j] = ciphertext[index]
+        
         # Return plaintext
         return "".join(plaintext)
     
