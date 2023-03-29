@@ -158,7 +158,7 @@ class Cipher:
                     # Append current character if it is not a newline character
                     ciphertext.append(rail[i][j])
         # Return ciphertext
-        return ciphertext
+        return "".join(ciphertext)
 
     ##########################################################################
     # DECRYPT
