@@ -30,8 +30,9 @@ class Cipher:
     # Returns the citation from which we learned about the cipher
     ##########################################################################
     def get_cipher_citation(self):
-        # TODO: This function should return your citation(s)
-        return "GeeksforGeeks. (2023, March 27). RAIL FENCE CIPHER - encryption and decryption. GeeksforGeeks. Retrieved March 28, 2023, from https://www.geeksforgeeks.org/rail-fence-cipher-encryption-decryption/"
+        tutorialsPoint = "Cryptography with Python - Quick Guide. Tutorials Point. (2023). Retrieved March 29, 2023, from https://www.tutorialspoint.com/cryptography_with_python/cryptography_with_python_quick_guide.htm#:~:text=any%20practical%20use.-,Transposition%20Cipher,-Transposition%20Cipher%20is"
+        geeksForGeeks = "GeeksforGeeks. (2023, March 27). RAIL FENCE CIPHER - encryption and decryption. GeeksforGeeks. Retrieved March 28, 2023, from https://www.geeksforgeeks.org/rail-fence-cipher-encryption-decryption/"
+        return "Source 1:\n" + tutorialsPoint + '\n\n' + "Source 2:\n" + geeksForGeeks
 
     ##########################################################################
     # GET PSEUDOCODE
