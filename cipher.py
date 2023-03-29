@@ -127,7 +127,7 @@ class Cipher:
         key = self._get_key_length(password)
         # Set rail grid system
         rail = [['\n' for i in range(len(plaintext))] for j in range(key)]
-        # Initialize variables for grid layout
+        # Initialize variables and directions for grid layout
         down_dir = False
         row, col = 0, 0
         # Loop through length of plaintext to determine grid layout width
@@ -168,8 +168,11 @@ class Cipher:
         # Get key from password length
         key = self._get_key_length(password)
         # Establish grid rail system
-        rail = [['\n' for i in range(len())]]
-
+        rail = [['\n' for i in range(len(ciphertext))] for j in range(key)]
+        # Initialize variables and directions for grid layout
+        down_dir = None
+        row, col = 0, 0
+        
         return "".join(plaintext)
     
     ##########################################################################
