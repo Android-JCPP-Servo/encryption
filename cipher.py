@@ -15,7 +15,7 @@
 class Cipher:
     def __init__(self):
         # TODO: Insert anything you need for your cipher here
-        self._key = 0 # Define number of rows or rails for encryption/decryption
+         self._key = 0 # Define number of rows or rails for encryption/decryption
 
     def get_author(self):
         # TODO: Return your name
@@ -105,7 +105,7 @@ class Cipher:
               "         row - 1\n" \
               "   RETURN \"\".join(plaintext)\n\n"
         
-        # Method for determining key size
+        # Method for determining self._key size
         pc += "get_key_length(password)\n" \
               "   RETURN len(password)"
 
@@ -124,17 +124,17 @@ class Cipher:
     # 5. Combine result layout into new (encrypted) string
     ##########################################################################
     def encrypt(self, plaintext, password):
-        # Get key length
-        key = self._get_key_length(password)
+        # Get self._key length
+        self._key = self._get_key_length(password)
         # Set rail grid system
-        rail = [['\n' for i in range(len(plaintext))] for j in range(key)]
+        rail = [['\n' for i in range(len(plaintext))] for j in range(self._key)]
         # Initialize variables and directions for grid layout
         down_dir = False
         row, col = 0, 0
         # Loop through length of plaintext to determine grid layout width
         for i in range(len(plaintext)):
             # Check if we're at the top or bottom of the grid layout
-            if row == 0 or row == key - 1:
+            if row == 0 or row == self._key - 1:
                 # Start moving down or up, depending on position
                 down_dir = not down_dir
             # Set the row and column to current string character position
@@ -151,8 +151,8 @@ class Cipher:
                 row -= 1
         # Begin defining the ciphertext
         ciphertext = []
-        # Loop through length of key and plaintext to construct ciphertext
-        for i in range(key):
+        # Loop through length of self._key and plaintext to construct ciphertext
+        for i in range(self._key):
             for j in range(len(plaintext)):
                 # Check if the current character is not a newline character
                 if rail[i][j] != '\n':
@@ -166,10 +166,10 @@ class Cipher:
     # TODO: ADD description
     ##########################################################################
     def decrypt(self, ciphertext, password):
-        # Get key from password length
-        key = self._get_key_length(password)
+        # Get self._key from password length
+        self._key = self._get_key_length(password)
         # Establish grid rail system
-        rail = [['\n' for i in range(len(ciphertext))] for j in range(key)]
+        rail = [['\n' for i in range(len(ciphertext))] for j in range(self._key)]
         # Initialize variables and directions for grid layout
         down_dir = None
         row, col = 0, 0
@@ -180,7 +180,7 @@ class Cipher:
                 # ...set down_dir to True
                 down_dir = True
             # IF we're on the top row...
-            if row == key - 1:
+            if row == self._key - 1:
                 # ...set down_dir to False
                 down_dir = False
             # Set current grid cell to *
@@ -197,8 +197,8 @@ class Cipher:
                 row -= 1
         # Start checking to see which grid cells are marked with text
         index = 0
-        # Loop through size of key to determine grid size
-        for i in range(key):
+        # Loop through size of self._key to determine grid size
+        for i in range(self._key):
             for j in range(len(ciphertext)):
                 # Check if cell has * marker
                 if rail[i][j] == '*' and index < len(ciphertext):
@@ -217,7 +217,7 @@ class Cipher:
                 # ...set down direction to True
                 down_dir = True
             # If we're on the top row...
-            if row == key - 1:
+            if row == self._key - 1:
                 # ...set down direction to False
                 down_dir = False
             # If the current char is not the marker...
