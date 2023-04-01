@@ -4,8 +4,8 @@
 # Author:
 #    Br. Helfrich, Kyle Mueller, Andersen Stewart
 # Summary:
-#    Implement your cipher here. You can view 'example.py' to see the
-#    completed Caesar Cipher example.
+#    Rail Fence Cipher - a method which encrypts/decrypts messages synchronously
+#    and ensures use of a password
 ##############################################################################
 
 
@@ -14,15 +14,12 @@
 ##############################################################################
 class Cipher:
     def __init__(self):
-        # TODO: Insert anything you need for your cipher here
-         self._key = 0 # Define number of rows or rails for encryption/decryption
+        self._key = 0 # Define number of rails for encryption/decryption
 
     def get_author(self):
-        # TODO: Return your name
         return "Andersen Stewart"
 
     def get_cipher_name(self):
-        # TODO: Return the cipher name
         return "Rail Fence Cipher"
 
     ##########################################################################
@@ -39,8 +36,6 @@ class Cipher:
     # Returns the pseudocode as a string to be used by the caller
     ##########################################################################
     def get_pseudocode(self):
-        # TODO: This function should return your psuedocode, neatly formatted
-
         # The encrypt pseudocode
         pc = "encrypt(plaintext, password)\n" \
              "   key <- get_key_length(password)\n" \
@@ -125,7 +120,7 @@ class Cipher:
     ##########################################################################
     def encrypt(self, plaintext, password):
         # Get self._key length
-        self._key = self._get_key_length(password)
+        self._get_key_length(password)
         # Set rail grid system
         rail = [['\n' for i in range(len(plaintext))] for j in range(self._key)]
         # Initialize variables and directions for grid layout
@@ -163,11 +158,18 @@ class Cipher:
 
     ##########################################################################
     # DECRYPT
-    # TODO: ADD description
+    # Using the Rail Fence decryption method, the ciphertext will be decrypted
+    # by following this process:
+    # 1. Loop through all columns, placing markers ('*') to indicate where
+    #    ciphertext characters will be placed along rail system
+    # 2. Replace markers with ciphertext characters, looping through entire
+    #    string
+    # 3. Append the characters together to form plaintext
+    # 4. Return the plaintext
     ##########################################################################
     def decrypt(self, ciphertext, password):
         # Get self._key from password length
-        self._key = self._get_key_length(password)
+        self._get_key_length(password)
         # Establish grid rail system
         rail = [['\n' for i in range(len(ciphertext))] for j in range(self._key)]
         # Initialize variables and directions for grid layout
@@ -239,7 +241,7 @@ class Cipher:
     
     ##########################################################################
     # GETKEYLENGTH
-    # TODO: ADD description
+    # Assign the password length as the key (encryption/decryption) value
     ##########################################################################
     def _get_key_length(self, password):
-        return len(password)
+        self._key = len(password)
